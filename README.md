@@ -4,7 +4,7 @@ This project is a web-based tool for generating license keys for R&S SMx and SMI
 
 ## Usage
 
-- Navigate to `index.html` in your web browser.
+- Navigate to [the `index.html` page](https://iu2frl.github.io/rs-sm-license-generator/) in your web browser.
 - Enter the serial number of your instrument.
 - Select the instrument type (SMx or SMIQx) from the dropdown menu.
 - Click the "Generate Keys" button to generate the license keys.
