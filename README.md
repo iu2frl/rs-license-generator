@@ -1,6 +1,6 @@
 # R&S License Generator
 
-This project is a web-based tool for generating license keys for old R&S instruments. 
+This project is a web-based tool for generating license keys for old R&S instruments.
 
 It allows hobbyists to enable features on now abandoned R&S instruments.
 
@@ -8,9 +8,29 @@ Supported Instruments:
 
 - SMx series
 - SMIQx series (tested successfully)
+- FSP series
 - CMU200/300
 
 This work was made possible thanks to the contributions and reverse engineering efforts shared by online forums, particularly the EEVBlog community.
+
+## Disclaimer
+
+> [!WARNING]
+> This tool is intended for educational and testing purposes only. The author is not responsible for any misuse or illegal activities involving the generated license keys. Use this tool at your own risk.
+
+### Important Note
+
+> [!NOTE]
+> Some options require specific instrument models, configurations, firmware release, or hardware modules to be active. Ensure that your instrument supports the selected options before generating license keys.
+
+> [!IMPORTANT]
+> Always make a full backup of your instrument's configuration and license keys before using this tool.
+
+### Why this repo?
+
+Some time ago I had to contact R&S to recover a license on a refurbished instrument, but after some chatting with the support, their response was *sorry, we don't have that software anymore, you're out of luck*. This experience motivated the creation of this project to help hobbyists and enthusiasts enable features on older R&S instruments.
+
+It is not my intention to encourage illegal activities or the unauthorized use of software. This project is purely to allow hobbyists and enthusiasts to explore and enable features on older R&S instruments for educational and testing purposes that would otherwise be inaccessible.
 
 ## Usage
 
@@ -19,14 +39,6 @@ This work was made possible thanks to the contributions and reverse engineering 
 - Select the instrument type from the dropdown menu.
 - Click the "Generate Keys" button to generate the license keys.
 - The generated keys will be displayed below the button.
-
-## Disclaimer
-
-> [!WARNING]
-> This tool is intended for educational and testing purposes only. The author is not responsible for any misuse or illegal activities involving the generated license keys. Use this tool at your own risk.
-
-> [!NOTE]
-> Some options require specific instrument models, configurations, firmware release, or hardware modules to be active. Ensure that your instrument supports the selected options before generating license keys.
 
 ## Report a missing feature
 

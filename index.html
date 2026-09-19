@@ -35,9 +35,10 @@
 
     <label for="type">Instrument Type</label>
     <select id="type">
-        <option value="smiq">SMIQ</option>
-        <option value="sme">SME</option>
-        <option value="cmu200">CMU200/CMU300</option>
+        <option value="smiq">SMIQ series</option>
+        <option value="sme">SME series</option>
+        <option value="cmu200">CMU200/CMU300 series</option>
+        <option value="fsp">FSP series</option>
     </select>
 
     <button onclick="generate()">Generate Keys</button>
@@ -53,7 +54,7 @@
     <div class="result" id="result"></div>
 
     <p>Released in 2026 by <a href="https://github.com/iu2frl">iu2frl</a> under the MIT License.</p>
-    <p>Source code available on <a href="https://github.com/iu2frl/rs-sm-license-generator">GitHub</a>.</p>
+    <p>Source code available on <a href="https://github.com/iu2frl/rs-sm-license-generator">GitHub</a>. Contributions are welcome.</p>
 </div>
 
     <script src="assets/utils-crc16.js"></script>
@@ -61,6 +62,7 @@
     <script src="assets/instrument-base.js"></script>
     <script src="assets/instrument-smiq-sme.js"></script>
     <script src="assets/instrument-cmu200.js"></script>
+    <script src="assets/instrument-fsp.js"></script>
     <script src="assets/app.js"></script>
 </body>
 </html>
