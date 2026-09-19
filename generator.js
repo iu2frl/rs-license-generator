@@ -86,14 +86,6 @@ function encrypt(option, serial, isSmiq) {
     return crc * 0x0D;
 }
 
-function copyKey(text, btn) {
-    navigator.clipboard.writeText(text).then(() => {
-        const orig = btn.textContent;
-        btn.textContent = "Copied!";
-        setTimeout(() => btn.textContent = orig, 1200);
-    });
-}
-
 function generate() {
     const serial = document.getElementById('serial').value.trim();
     const isSmiq = document.getElementById('type').value === 'smiq';
@@ -111,7 +103,6 @@ function generate() {
                         <span class="opt-name">${opt.name}</span>
                         <span class="opt-desc">${opt.desc}</span>
                     </span>
-                    <button class="copy-btn" onclick="copyKey('${formattedKey}', this)">Copy</button>
                 </div>`;
         }
     });
