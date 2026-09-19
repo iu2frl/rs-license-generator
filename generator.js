@@ -106,10 +106,11 @@ function generate() {
             const formattedKey = String(key).padStart(6, '0');
             resultDiv.innerHTML += `
                 <div class="result-item">
-                    <div>
-                        <span class="key">${formattedKey}</span>
-                        <span class="desc">${opt.name} — ${opt.desc}</span>
-                    </div>
+                    <span class="key">${formattedKey}</span>
+                    <span class="desc">
+                        <span class="opt-name">${opt.name}</span>
+                        <span class="opt-desc">${opt.desc}</span>
+                    </span>
                     <button class="copy-btn" onclick="copyKey('${formattedKey}', this)">Copy</button>
                 </div>`;
         }

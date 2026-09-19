@@ -13,10 +13,12 @@
         button { margin-top: 1.5rem; padding: 0.75rem 1.5rem; background: #00d4ff; color: #000; border: none; cursor: pointer; font-weight: bold; border-radius: 4px; width: 100%; }
         button:hover { opacity: 0.85; }
         .result { margin-top: 1.5rem; }
-        .result-item { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; background: #0f3460; margin-bottom: 0.5rem; border-radius: 4px; }
-        .key { color: #00d4ff; font-weight: bold; font-family: monospace; font-size: 1.1rem; margin-right: 1rem; }
-        .desc { color: #888; font-size: 0.9rem; }
-        .copy-btn { background: none; border: 1px solid #444; color: #888; padding: 0.25rem 0.5rem; border-radius: 4px; cursor: pointer; font-size: 0.8rem; }
+        .result-item { display: flex; align-items: center; padding: 0.6rem 1rem; background: #0f3460; margin-bottom: 0.4rem; border-radius: 6px; border-left: 3px solid #00d4ff; }
+        .key { color: #00d4ff; font-weight: bold; font-family: 'Courier New', monospace; font-size: 1rem; min-width: 70px; letter-spacing: 1px; }
+        .desc { color: #ccc; font-size: 0.85rem; flex: 1; margin: 0 0.75rem; display: flex; flex-direction: column; gap: 2px; }
+        .opt-name { color: #fff; font-weight: 600; font-size: 0.85rem; white-space: nowrap; }
+        .opt-desc { color: #999; font-size: 0.75rem; white-space: nowrap; }
+        .copy-btn { background: none; border: 1px solid #444; color: #888; padding: 0.2rem 0.5rem; border-radius: 4px; cursor: pointer; font-size: 0.7rem; margin-left: auto; transition: all 0.2s; }
         .copy-btn:hover { border-color: #00d4ff; color: #00d4ff; }
     </style>
 </head>
