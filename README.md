@@ -1,12 +1,22 @@
-# R&S SMx License Generator
+# R&S License Generator
 
-This project is a web-based tool for generating license keys for R&S SMx and SMIQx instruments. It allows users to input the serial number and select the instrument type to generate the corresponding license keys.
+This project is a web-based tool for generating license keys for old R&S instruments. 
+
+It allows hobbyists to enable features on now abandoned R&S instruments.
+
+Supported Instruments:
+
+- SMx series
+- SMIQx series (tested successfully)
+- CMU200/300
+
+This work was made possible thanks to the contributions and reverse engineering efforts shared by online forums, particularly the EEVBlog community.
 
 ## Usage
 
-- Navigate to [the `index.html` page](https://iu2frl.github.io/rs-sm-license-generator/) in your web browser.
+- Navigate to [the `index.html` page](https://iu2frl.github.io/rs-license-generator/) in your web browser.
 - Enter the serial number of your instrument.
-- Select the instrument type (SMx or SMIQx) from the dropdown menu.
+- Select the instrument type from the dropdown menu.
 - Click the "Generate Keys" button to generate the license keys.
 - The generated keys will be displayed below the button.
 
@@ -32,4 +42,4 @@ This code was ported and adapted from the original R&S SMx license generation sc
 
 - Original source code for the SMx series at: [SMx.c](./references/SM%20series/SMx.c) by [leakyDiode](https://www.eevblog.com/forum/profile/?u=1010671)
 - Original source code for the FSP series at: [FSP.c](./references/FSP%20series/FSP%20Keygen.sln) by [eliocor](https://www.eevblog.com/forum/profile/?u=3095)
-- Generator for the CMU series was reverse engineered from the baseV5.22 firmware.
+- Generator for the CMU series was reverse engineered by decompiling the `baseV5.22` firmware. See the [CMU200](./references/CMU200/) folder for details.

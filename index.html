@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>R&S SMx License Generator</title>
+    <title>R&S License Generator</title>
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #1a1a2e; color: #e0e0e0; padding: 2rem; }
         .container { max-width: 700px; margin: 0 auto; background: #16213e; padding: 2rem; border-radius: 8px; }
@@ -28,7 +28,7 @@
 </head>
 <body>
 <div class="container">
-    <h1>R&S SMx/SMIQx License Generator</h1>
+    <h1>R&S License Generator</h1>
 
     <label for="serial">Serial Number</label>
     <input type="text" id="serial" placeholder="e.g. 123456/7890" value="123456/7890">
@@ -37,6 +37,7 @@
     <select id="type">
         <option value="smiq">SMIQ</option>
         <option value="sme">SME</option>
+        <option value="cmu200">CMU200/CMU300</option>
     </select>
 
     <button onclick="generate()">Generate Keys</button>
