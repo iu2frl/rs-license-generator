@@ -3,6 +3,8 @@ const INSTRUMENT_GENERATORS = {
     sme: new SmiqSmeGenerator('sme', 'SME', 'SM3'),
     cmu200: new Cmu200Generator(),
     fsp: new FspGenerator(),
+    fsiq3: new Fsiq3Generator(),
+    fsq8: new Fsq8Generator(),
 };
 
 function generate() {

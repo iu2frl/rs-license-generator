@@ -8,7 +8,7 @@ Supported Instruments:
 
 - SMx series
 - SMIQx series (tested successfully)
-- FSx series (including FSU, FSQ, FSP and FSIQ)
+- FSx series (including FSU, FSQ, FSP, FSH and FSIQ)
 - CMU200/300
 
 This work was made possible thanks to the contributions and reverse engineering efforts shared by online forums, particularly the EEVBlog community.
