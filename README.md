@@ -32,6 +32,8 @@ This work was made possible thanks to the contributions and reverse engineering 
 
 If you encounter a missing feature or option that should be available for your instrument, please report it by opening an issue on the GitHub repository. Include details about your instrument model, firmware version, and the feature you believe is missing.
 
+If you are not afraid of coding, you can also open a pull request with your proposed changes or additions to the project, you can find guidance in the [CONTRIBUTING.md](./CONTRIBUTING.md) file.
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
