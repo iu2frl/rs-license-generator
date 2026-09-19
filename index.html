@@ -20,6 +20,10 @@
         .opt-desc { color: #999; font-size: 0.75rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .copy-btn { background: none; border: 1px solid #444; color: #888; padding: 0.2rem 0.5rem; border-radius: 4px; cursor: pointer; font-size: 0.7rem; width: 128px; text-align: center; margin-left: auto; flex-shrink: 0; transition: all 0.2s; }
         .copy-btn:hover { border-color: #00d4ff; color: #00d4ff; }
+        .disclaimer { margin-top: 2rem; padding: 1rem; background: #0f3460; border-radius: 6px; border-left: 3px solid #ff6b6b; font-size: 0.85rem; color: #ccc; line-height: 1.5; }
+        .disclaimer strong { color: #ff6b6b; }
+        .note { margin-top: 2rem; padding: 1rem; background: #0f3460; border-radius: 6px; border-left: 3px solid #6bff72; font-size: 0.85rem; color: #ccc; line-height: 1.5; }
+        .note strong { color: #6bff72; }
     </style>
 </head>
 <body>
@@ -37,10 +41,18 @@
 
     <button onclick="generate()">Generate Keys</button>
 
-    <p>Some options might require additional hardware modules to be fitted and/or specific firmware versions.</p>
-    <P>Please refer to the user manual of your device before entering any key.</P>
+    <div class="disclaimer">
+        <strong>Disclaimer:</strong> This tool is intended for educational and testing purposes only. The author is not responsible for any misuse or illegal activities involving the generated license keys. Use this tool at your own risk. Some options require specific instrument models, configurations or hardware modules to be active. Ensure that your instrument supports the selected options before generating license keys.
+    </div>
+    
+    <div class="note">
+        <strong>Note:</strong> Some options require specific instrument models, configurations, firmware release, or hardware modules to be active. Ensure that your instrument supports the selected options before generating license keys.
+    </div>
 
     <div class="result" id="result"></div>
+
+    <p>Released in 2026 by [iu2frl](https://github.com/iu2frl) under the MIT License.</p>
+    <p>Source code available on <a href="https://github.com/iu2frl/rs-sm-license-generator">GitHub</a>.</p>
 </div>
 
     <script src="generator.js"></script>
