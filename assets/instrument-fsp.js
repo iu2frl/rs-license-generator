@@ -1,11 +1,14 @@
-// FSP option table, cross-checked against both references/FSP series/main.c and
-// https://github.com/rdelien/fsxx_keygen (fsp_options[]) - seed indices agree exactly.
+// FSP option table, cross-checked against references/FSP series/main.c,
+// https://github.com/rdelien/fsxx_keygen (fsp_options[]), and the "R&S Keygen" WASM
+// app at https://rohde.nonexistent.ca/ - seed indices agree across all three sources.
+// seedIndex 5 is named "K85" (not the "K84" in the original main.c comment) per the
+// latter two independently-verified sources.
 const FSP_OPTIONS = [
     { seedIndex: 0, name: "K5", desc: "GSM/EDGE Application Firmware" },
     { seedIndex: 1, name: "K7", desc: "AM/FM/PM Measurement Demodulator" },
     { seedIndex: 2, name: "B17", desc: "IQ Online" },
     { seedIndex: 4, name: "K84", desc: "1xEV-DO BTS Application Firmware" },
-    { seedIndex: 5, name: "K84", desc: "1xEV-DO MS Application Firmware" },
+    { seedIndex: 5, name: "K85", desc: "1xEV-DO MS Application Firmware" },
     { seedIndex: 10, name: "K9", desc: "Power Meter" },
     { seedIndex: 14, name: "K76", desc: "3GPP TD-SCDMA BTS Application Firmware" },
     { seedIndex: 15, name: "K77", desc: "3GPP TD-SCDMA MS Application Firmware" },

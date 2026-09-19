@@ -5,6 +5,7 @@ const INSTRUMENT_GENERATORS = {
     fsp: new FspGenerator(),
     fsiq3: new Fsiq3Generator(),
     fsq8: new Fsq8Generator(),
+    fsem: new FsemGenerator(),
 };
 
 function generate() {

@@ -8,8 +8,11 @@ Supported Instruments:
 
 - SMx series
 - SMIQx series (tested successfully)
-- FSx series (including FSU, FSQ, FSP, FSH and FSIQ)
 - CMU200/300
+- FSP series
+- FSIQ3
+- FSQ8
+- FSEM series
 
 This work was made possible thanks to the contributions and reverse engineering efforts shared by online forums, particularly the EEVBlog community.
 
@@ -57,3 +60,4 @@ This code was ported and adapted from the original R&S SMx license generation sc
 - Original source code for the SMx series at: [SMx.c](./references/SM%20series/SMx.c) by [leakyDiode](https://www.eevblog.com/forum/profile/?u=1010671)
 - Original source code for the FSP series at: [FSP.c](./references/FSP%20series/FSP%20Keygen.sln) by [eliocor](https://www.eevblog.com/forum/profile/?u=3095)
 - Generator for the CMU series was reverse engineered by decompiling the `baseV5.22` firmware. See the [CMU200](./references/CMU200/) folder for details.
+- FSIQ3, FSQ8 and FSEM option catalogs were cross-checked against [rdelien/fsxx_keygen](https://github.com/rdelien/fsxx_keygen) and the [R&S Keygen](https://rohde.nonexistent.ca/) WASM app, in addition to the original FSP source above.
