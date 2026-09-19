@@ -30,4 +30,6 @@ This project is licensed under the MIT License. See the [LICENSE](./LICENSE) fil
 
 This code was ported and adapted from the original R&S SMx license generation scripts found at [EEVBlog](https://www.eevblog.com/forum/testgear/enabling-options-for-rs-test-equipment/325/) for educational purposes.
 
-Original source code at: [SMx.c](./SMx.c) by [leakyDiode](https://www.eevblog.com/forum/profile/?u=1010671)
+- Original source code for the SMx series at: [SMx.c](./references/SM%20series/SMx.c) by [leakyDiode](https://www.eevblog.com/forum/profile/?u=1010671)
+- Original source code for the FSP series at: [FSP.c](./references/FSP%20series/FSP%20Keygen.sln) by [eliocor](https://www.eevblog.com/forum/profile/?u=3095)
+- Generator for the CMU series was reverse engineered from the baseV5.22 firmware.
