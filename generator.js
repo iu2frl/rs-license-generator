@@ -1,42 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>R&S SMx License Generator</title>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #1a1a2e; color: #e0e0e0; padding: 2rem; }
-        .container { max-width: 700px; margin: 0 auto; background: #16213e; padding: 2rem; border-radius: 8px; }
-        h1 { color: #00d4ff; margin-bottom: 1.5rem; }
-        label { display: block; margin-top: 1rem; font-weight: bold; color: #aaa; }
-        input[type="text"], select { width: 100%; padding: 0.75rem; margin-top: 0.25rem; background: #0f3460; border: 1px solid #333; color: #fff; border-radius: 4px; }
-        button { margin-top: 1.5rem; padding: 0.75rem 1.5rem; background: #00d4ff; color: #000; border: none; cursor: pointer; font-weight: bold; border-radius: 4px; width: 100%; }
-        button:hover { opacity: 0.85; }
-        .result { margin-top: 1.5rem; }
-        .result-item { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; background: #0f3460; margin-bottom: 0.5rem; border-radius: 4px; }
-        .key { color: #00d4ff; font-weight: bold; font-family: monospace; font-size: 1.1rem; }
-        .desc { color: #888; font-size: 0.9rem; }
-    </style>
-</head>
-<body>
-<div class="container">
-    <h1>R&S SMx/SMIQx License Generator</h1>
-
-    <label for="serial">Serial Number</label>
-    <input type="text" id="serial" placeholder="e.g. 832492/0081" value="832492/0081">
-
-    <label for="type">Instrument Type</label>
-    <select id="type">
-        <option value="smiq">SMIQ</option>
-        <option value="sme">SME</option>
-    </select>
-
-    <button onclick="generate()">Generate Keys</button>
-
-    <div class="result" id="result"></div>
-</div>
-
-<script>
 const CRC_POLY_16 = 0xA001;
 const CRC_START_16 = 0x0001;
 
@@ -125,6 +86,14 @@ function encrypt(option, serial, isSmiq) {
     return crc * 0x0D;
 }
 
+function copyKey(text, btn) {
+    navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = "Copied!";
+        setTimeout(() => btn.textContent = orig, 1200);
+    });
+}
+
 function generate() {
     const serial = document.getElementById('serial').value.trim();
     const isSmiq = document.getElementById('type').value === 'smiq';
@@ -137,14 +106,14 @@ function generate() {
             const formattedKey = String(key).padStart(6, '0');
             resultDiv.innerHTML += `
                 <div class="result-item">
-                    <span class="key">${formattedKey}</span>
-                    <span class="desc">${opt.name} — ${opt.desc}</span>
+                    <div>
+                        <span class="key">${formattedKey}</span>
+                        <span class="desc">${opt.name} — ${opt.desc}</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyKey('${formattedKey}', this)">Copy</button>
                 </div>`;
         }
     });
 }
 
-generate();
-</script>
-</body>
-</html>
+document.addEventListener('DOMContentLoaded', generate);
