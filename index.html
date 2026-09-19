@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R&S SMx/SMIQx License Generator</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #1a1a2e; color: #e0e0e0; min-height: 100vh; display: flex; justify-content: center; align-items: flex-start; padding: 40px 20px; }
+        .container { background: #16213e; border-radius: 16px; padding: 32px; max-width: 520px; width: 100%; box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+        h1 { font-size: 1.4rem; color: #00d4ff; margin-bottom: 6px; }
+        .subtitle { font-size: 0.85rem; color: #888; margin-bottom: 28px; }
+        label { display: block; font-size: 0.8rem; color: #aaa; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
+        input[type="text"], select { width: 100%; padding: 10px 14px; border: 1px solid #333; border-radius: 8px; background: #0f3460; color: #fff; font-size: 1rem; margin-bottom: 20px; outline: none; transition: border-color 0.2s; }
+        input[type="text"]:focus, select:focus { border-color: #00d4ff; }
+        .radio-group { display: flex; gap: 16px; margin-bottom: 24px; }
+        .radio-group label { display: flex; align-items: center; gap: 6px; text-transform: none; font-size: 0.95rem; cursor: pointer; }
+        .radio-group input[type="radio"] { accent-color: #00d4ff; width: 16px; height: 16px; }
+        button { width: 100%; padding: 12px; border: none; border-radius: 8px; background: linear-gradient(135deg, #00d4ff, #0090b3); color: #000; font-size: 1rem; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
+        button:hover { opacity: 0.85; }
+        .results { margin-top: 24px; }
+        .results h2 { font-size: 1rem; color: #ccc; margin-bottom: 12px; }
+        .result-item { display: flex; justify-content: space-between; align-items: center; background: #0f3460; border-radius: 8px; padding: 10px 14px; margin-bottom: 8px; }
+        .result-key { font-family: 'Courier New', monospace; font-size: 1.1rem; color: #00d4ff; font-weight: bold; }
+        .result-opt { font-size: 0.85rem; color: #aaa; }
+        .copy-btn { background: none; border: 1px solid #444; border-radius: 6px; color: #aaa; padding: 4px 10px; font-size: 0.75rem; cursor: pointer; width: auto; margin-left: 10px; }
+        .copy-btn:hover { border-color: #00d4ff; color: #00d4ff; opacity: 1; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>R&S SMx License Generator</h1>
+    <p class="subtitle">Enter your instrument serial to generate option keys</p>
+
+    <label for="serial">Serial Number</label>
+    <input type="text" id="serial" placeholder="e.g. 832492/0081" value="832492/0081">
+
+    <label>Instrument Type</label>
+    <div class="radio-group">
+        <label><input type="radio" name="type" value="smiq" checked> SMIQ</label>
+        <label><input type="radio" name="type" value="sme"> SME</label>
+    </div>
+
+    <button onclick="generate()">Generate Keys</button>
+
+    <div class="results" id="results"></div>
+</div>
+
+<script>
+const OPTIONS = [
+    { name: "SME42|43|46",  desc: "Enables B41, B42, B43" },
+    { name: "SME-B31",      desc: "Unknown opt" },
+    { name: "SME-B32",      desc: "Unknown opt" },
+    { name: "SME-B41",      desc: "SME-B41 FLEX" },
+    { name: "SME-B42",      desc: "SME-B42 POCSAG" },
+    { name: "SME-B43",      desc: "SME-B43 REFLEX" },
+    { name: "SMIQ03",       desc: "Generator Model" },
+    { name: "SMIQ03B",      desc: "Generator Model" },
+    { name: "SMIQ03HD",     desc: "Generator Model" },
+    { name: "SMIQ04B",      desc: "Generator Model" },
+    { name: "SMIQ06B",      desc: "Generator Model" },
+    { name: "SMIQB42",      desc: "Digital Standard IS-95 CDMA" },
+    { name: "SMIQB43",      desc: "Digital Standard WCDMA NTT DoCoMo 1.0 / ARIB 0.0" },
+    { name: "SMIQB45",      desc: "Digital Standard WCDMA 3GPP (FDD)" },
+    { name: "SMIQB47",      desc: "Low ACP for IS-95 CDMA and W-CDMA" },
+    { name: "SMIQB48",      desc: "Extended Functions for WCDMA (3GPP)" },
+    { name: "SMIQB49",      desc: "Extended Fading Functions for WCDMA (3GPP)" },
+    { name: "SMIQB50",      desc: "Fast CPU" },
+    { name: "SMIQB51",      desc: "Unknown opt" },
+    { name: "SMIQB21",      desc: "BER measurement" },
+    { name: "SMIQB60",      desc: "Arbitrary Waveform Generator incl. R&S WinIQSIM" },
+    { name: "SMIQK8",       desc: "TETRA T1 Simulator" },
+    { name: "SMIQK08",      desc: "TETRA T1 Simulator" },
+    { name: "SMIQK11",      desc: "Digital Standard IS-95 CDMA" },
+    { name: "SMIQK12",      desc: "Digital Standard cdma2000" },
+    { name: "SMIQK13",      desc: "Digital Standard WCDMA TDD Mode (3GPP)" },
+    { name: "SMIQK14",      desc: "Digital Standard TD-SCDMA" },
+    { name: "SMIQK15",      desc: "OFDM Signal Generation, HIPERLAN/2" },
+    { name: "SMIQK16",      desc: "Digital Standard IEEE 802.11b" },
+    { name: "SMIQK17",      desc: "Digital Standard 1xEV-DO" },
+    { name: "SMIQK18",      desc: "Digital Standard IEEE 802.11a" },
+    { name: "SMIQK19",      desc: "802.11 Wireless LAN" },
+    { name: "SMIQK20",      desc: "3GPP FTD Inclusive HSDPA" },
+];
+
+const CRC_POLY = 0xA001;
+const CRC_INIT = 0x0001;
+let crcTable = null;
+
+function buildCrcTable() {
+    const table = new Array(256);
+    for (let i = 0; i < 256; i++) {
+        let crc = 0;
+        let c = i;
+        for (let j = 0; j < 8; j++) {
+            if ((crc ^ c) & 1) crc = (crc >> 1) ^ CRC_POLY;
+            else crc = crc >> 1;
+            c = c >> 1;
+        }
+        table[i] = crc;
+    }
+    return table;
+}
+
+function crc16(str) {
+    if (!crcTable) crcTable = buildCrcTable();
+    let crc = CRC_INIT;
+    for (let i = 0; i < str.length; i++) {
+        crc = (crc >> 8) ^ crcTable[(crc ^ str.charCodeAt(i)) & 0xFF];
+    }
+    return crc;
+}
+
+function encrypt(option, serial, isSmiq) {
+    const prefix = isSmiq ? "SMIQ" : "SM3";
+    let keyStr = prefix;
+    let charCount = prefix.length;
+    let loopCount = 0;
+    let ptr = 0;
+
+    while (loopCount < 0x10 && ptr < serial.length) {
+        const ch = serial.charCodeAt(ptr);
+        if (ch !== 0x20) {
+            keyStr += serial[ptr];
+            charCount++;
+        }
+        ptr++;
+        loopCount++;
+    }
+
+    keyStr += option;
+    const crc = crc16(keyStr);
+    return crc * 0x0D;
+}
+
+function copyKey(text, btn) {
+    navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = "Copied!";
+        setTimeout(() => btn.textContent = orig, 1200);
+    });
+}
+
+function generate() {
+    const serial = document.getElementById("serial").value.trim();
+    const isSmiq = document.querySelector('input[name="type"]:checked').value === "smiq";
+    const results = document.getElementById("results");
+    results.innerHTML = "<h2>Generated Keys</h2>";
+
+    if (!serial) {
+        results.innerHTML += "<p style='color:#f44;'>Please enter a serial number.</p>";
+        return;
+    }
+
+    OPTIONS.forEach(opt => {
+        const key = encrypt(opt.name, serial, isSmiq);
+        const formatted = String(key).padStart(6, "0");
+        const div = document.createElement("div");
+        div.className = "result-item";
+        div.innerHTML = `
+            <div>
+                <div class="result-key">${formatted}</div>
+                <div class="result-opt">${opt.name} <span style="color:#666">— ${opt.desc}</span></div>
+            </div>
+            <button class="copy-btn" onclick="copyKey('${formatted}', this)">Copy</button>
+        `;
+        results.appendChild(div);
+    });
+}
+
+generate();
+</script>
+</body>
+</html>
