@@ -8,7 +8,7 @@ Supported Instruments:
 
 - SMx series
 - SMIQx series (tested successfully)
-- CMU200/300
+- CMU200/300 (tested successfullly)
 - FSP series
 - FSIQ3
 - FSQ8
