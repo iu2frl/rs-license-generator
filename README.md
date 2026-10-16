@@ -13,6 +13,8 @@ Supported Instruments:
 - FSIQ3
 - FSQ8
 - FSEM series
+- SFIQ series
+- AMIQ series
 
 This work was made possible thanks to the contributions and reverse engineering efforts shared by online forums, particularly the EEVBlog community.
 
