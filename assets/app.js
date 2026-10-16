@@ -7,6 +7,7 @@ const INSTRUMENT_GENERATORS = {
     fsq8: new Fsq8Generator(),
     fsem: new FsemGenerator(),
     sfq: new SfqGenerator(),
+    amiq: new AmiqGenerator(),
 };
 
 function generate() {
